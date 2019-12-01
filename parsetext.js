@@ -1,15 +1,17 @@
 class ParseText {
-  constructor(text) {
+  constructor(text, lang) {
     this.data = text;
+    this.lang = lang;
     this.stats = this.makeStat();
-    this.lang = 'ru'; //добавить язык
   }
 
   makeStat() {
     let stats = {};
-    let regexp = /[а-яё]/gmi;
+    let regexp = {'ru':/[а-яё]/gmi, 'eng': /[a-z]/gmi};
     let text = this.data.toUpperCase();
-    let letters = text.match(regexp);
+    let letters = text.match(regexp[this.lang]);
+
+    if (!letters) return;
 
     this.totalLetters = letters.length;
 

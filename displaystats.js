@@ -3,7 +3,10 @@ class DisplayStats {
     this.canvas = canvas;
     this.ctx = canvas.getContext('2d');
     this.statsObj = statsObj;
-    this.ABC = ['А','Б','В','Г','Д','Е','Ё','Ж','З','И','Й','К','Л','М','Н','О','П','Р','С','Т','У','Ф','Х','Ц','Ч','Ш','Щ','Ъ','Ы','Ь','Э','Ю','Я'];
+    this.ABC = {
+      'ru': ['А','Б','В','Г','Д','Е','Ё','Ж','З','И','Й','К','Л','М','Н','О','П','Р','С','Т','У','Ф','Х','Ц','Ч','Ш','Щ','Ъ','Ы','Ь','Э','Ю','Я'],
+      'eng': ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+    }
     this.setSize();
     this.addGrid();
     this.pasteStats();
@@ -39,11 +42,12 @@ class DisplayStats {
   pasteStats() {
     let stats = this.statsObj.stats;
     let totalLetters = this.statsObj.totalLetters;
-    console.log(totalLetters);
+    let abc = this.ABC[this.statsObj.lang];
+
     this.ctx.font = 'bold 25px monospace'
 
-    for (let i = 0; i < 33; i++) {
-      let letter = this.ABC[i];
+    for (let i = 0; i < abc.length; i++) {
+      let letter = abc[i];
       let percent = (stats[letter] / totalLetters) * 100;
       this.ctx.fillStyle = 'blue';
       this.ctx.fillRect(20 + i * 20, 250, 10, -(percent * 20)); //умножение на 20 для маштаба, нужно переработать
