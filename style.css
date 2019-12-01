@@ -1,0 +1,29 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.main-content {
+  box-sizing: border-box;
+  max-width: 768px;
+  margin: auto;
+  padding: 10px;
+  box-shadow: 0 0 10px 0 black;
+}
+
+.textarea {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 50px;
+  margin: 10px 0;
+  padding: 5px;
+  resize: vertical;
+}
+
+.canvas {
+  display: block;
+  margin: 10px auto;
+  border: 1px solid black;
+}
